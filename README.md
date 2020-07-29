@@ -1,2 +1,4 @@
 # productivity_tracker
-Productivity Tracker made for windows 10. Chrome does not function properly with tracker
+Productivity tracker made for use on windows 10 computers. 
+
+Chrome does not function properly with tracker.
