@@ -184,8 +184,10 @@ def website_time_update(this_app, seconds, url):
     if this_app.lower() in browser_list:
         if event.is_productive("website", last_url):
             event.create_activity("Productive Website", seconds, today_date)
+            event.add_productivity("Productive Website", "event", "productive")
         else:
             event.create_activity("Unproductive Website", seconds, today_date)
+            event.add_productivity("Unproductive Website", "event", "unproductive")
     else:
         event.add_productivity(this_app, "event", "productive")
         event.create_activity(this_app, seconds, today_date)
@@ -215,10 +217,12 @@ def tracker():
                     minutes %= 60
                     if old_prod:
                         event.create_activity("Productive Website", seconds, today_date)
+                        event.add_productivity("Productive Website", "event", "productive")          
                     else:
                         event.create_activity(
                             "Unproductive Website", seconds, today_date
                         )
+                        event.add_productivity("Unproductive Website", "event", "productive")
                     seconds = 0
                     last_url = new_url
     if not new_app == last_app:
@@ -271,11 +275,6 @@ def menu_home(date):
         stop_button.place(x=365, y=100)
     place_calendar()
     load_day_productivity(date)
-
-
-# load Detailed Summary
-def menu_detailed_summary(date):
-    return
 
 
 # load Add activity
